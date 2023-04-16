@@ -1,6 +1,8 @@
 import os
 import glob
 import time
+import sys
+from PyQt5 import QtWidgets, uic
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
@@ -8,6 +10,10 @@ os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
+
+app = QtWidgets.QApplication([])
+ui = uic.loadUi("therm_monitor.ui")
+ui.setWindowTitle("DS18B20")
 
 def read_temp_raw():
     f = open(device_file, 'r')
@@ -26,6 +32,9 @@ def read_temp():
         temp_c = float(temp_string)/1000.0
         temp_f = temp_c*9.0/5.0+32.0
         return temp_c, temp_f
+ui.show()
+app.exec()
+
 try:
     while True:
         print(read_temp())
