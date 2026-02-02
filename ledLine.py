@@ -14,6 +14,9 @@ pwmoutB.start(0)
 
 try:
     while True:
+        #pwmoutR.ChangeDutyCycle(100)
+        #pwmoutG.ChangeDutyCycle(100)
+        #pwmoutB.ChangeDutyCycle(100)
         for duteCycle in range(0,100,1):
             pwmoutB.ChangeDutyCycle(duteCycle)
             pwmoutG.ChangeDutyCycle(100-duteCycle)
