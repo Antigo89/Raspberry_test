@@ -1,0 +1,12 @@
+Thumbs.db
+*.log
+#Python
+__pycache__
+*.pyc
+.venv/
+venv/
+pip-log.txt
+# C/C++
+*.o
+*.s
+*.elf
